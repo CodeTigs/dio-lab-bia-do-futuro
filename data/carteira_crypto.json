@@ -1,0 +1,36 @@
+{
+  "usuario_id": "usr_001",
+  "nome": "Mestre",
+  "moeda_base": "USD",
+  "ativos": [
+    {
+      "simbolo": "BTC",
+      "nome": "Bitcoin",
+      "quantidade": 0.45,
+      "preco_medio_compra": 42000.00,
+      "rede": "Bitcoin"
+    },
+    {
+      "simbolo": "ETH",
+      "nome": "Ethereum",
+      "quantidade": 4.2,
+      "preco_medio_compra": 2100.00,
+      "rede": "Ethereum"
+    },
+    {
+      "simbolo": "SOL",
+      "nome": "Solana",
+      "quantidade": 150.0,
+      "preco_medio_compra": 85.50,
+      "rede": "Solana"
+    },
+    {
+      "simbolo": "LINK",
+      "nome": "Chainlink",
+      "quantidade": 300.0,
+      "preco_medio_compra": 14.20,
+      "rede": "Ethereum"
+    }
+  ],
+  "ultima_atualizacao": "2026-03-23T20:30:00Z"
+}
