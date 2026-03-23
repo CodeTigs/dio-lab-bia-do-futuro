@@ -1,0 +1,26 @@
+{
+  "tokens_aprovados": [
+    {
+      "simbolo": "USDT",
+      "nome": "Tether USD",
+      "rede": "Ethereum",
+      "contrato": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+      "risco_contrato": "Baixo"
+    },
+    {
+      "simbolo": "LINK",
+      "nome": "Chainlink",
+      "rede": "Ethereum",
+      "contrato": "0x514910771af9ca656af840dff83e8264ecf986ca",
+      "risco_contrato": "Baixo"
+    },
+    {
+      "simbolo": "UNI",
+      "nome": "Uniswap",
+      "rede": "Ethereum",
+      "contrato": "0x1f9840a85d5af5bf1d1762f925bdaddc4201f984",
+      "risco_contrato": "Baixo"
+    }
+  ],
+  "ultima_auditoria": "2026-03-01T10:00:00Z"
+}
