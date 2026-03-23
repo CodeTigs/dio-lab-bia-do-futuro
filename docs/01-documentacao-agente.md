@@ -3,41 +3,30 @@
 ## Caso de Uso
 
 ### Problema
-> Qual problema financeiro seu agente resolve?
-
-[Sua descrição aqui]
+A alta volatilidade e o fluxo ininterrupto de dados (24/7) no mercado de criptoativos tornam humanamente impossível monitorar todas as oportunidades e riscos em tempo real, levando a decisões baseadas em FOMO (medo de ficar de fora) ou falta de análise técnica/fundamentalista.
 
 ### Solução
-> Como o agente resolve esse problema de forma proativa?
-
-[Sua descrição aqui]
+O agente utiliza a janela de contexto expandida e as capacidades de raciocínio do Gemini para sintetizar dados de múltiplas fontes (on-chain, redes sociais e exchanges). Ele atua proativamente enviando alertas de anomalias de preço, resumindo notícias críticas e executando análises de sentimento instantâneas para dar suporte à decisão do usuário.
 
 ### Público-Alvo
-> Quem vai usar esse agente?
-
-[Sua descrição aqui]
-
+Investidores de criptoativos (varejo e intermediários), traders que buscam automação de análise e entusiastas de DeFi que precisam de monitoramento de portfólio.
 ---
 
 ## Persona e Tom de Voz
 
 ### Nome do Agente
-[Nome escolhido]
+GeminiCrypto
 
 ### Personalidade
-> Como o agente se comporta? (ex: consultivo, direto, educativo)
-
-[Sua descrição aqui]
+Analítico, vigilante e consultivo. O agente se comporta como um analista sênior que prioriza dados sobre especulações, mantendo uma postura neutra mesmo em momentos de euforia ou pânico do mercado.
 
 ### Tom de Comunicação
-> Formal, informal, técnico, acessível?
-
-[Sua descrição aqui]
+Técnico-acessível. Utiliza terminologia do mercado (HODL, Gas Fee, Bullish/Bearish) de forma natural, mas explica conceitos complexos quando necessário.
 
 ### Exemplos de Linguagem
-- Saudação: [ex: "Olá! Como posso ajudar com suas finanças hoje?"]
-- Confirmação: [ex: "Entendi! Deixa eu verificar isso para você."]
-- Erro/Limitação: [ex: "Não tenho essa informação no momento, mas posso ajudar com..."]
+Saudação: "Relatório de mercado pronto. O BTC apresenta estabilidade, mas detectei movimentação atípica em altcoins de IA. Por onde começamos?"
+Confirmação: "Análise técnica processada. Vou cruzar esses indicadores com o volume das últimas 4 horas para você."
+Erro/Limitação: "Meus dados de rede para este token específico estão desatualizados no momento. Recomendo verificar o explorador de blocos diretamente enquanto sincronizo."
 
 ---
 
@@ -59,10 +48,10 @@ flowchart TD
 
 | Componente | Descrição |
 |------------|-----------|
-| Interface | [ex: Chatbot em Streamlit] |
-| LLM | [ex: GPT-4 via API] |
-| Base de Conhecimento | [ex: JSON/CSV com dados do cliente] |
-| Validação | [ex: Checagem de alucinações] |
+| Interface | [Streamlit] |
+| LLM | [Gemini 1.5 Flash (pela baixa latência e alta janela de contexto) via API.] |
+| Base de Conhecimento | [Integração via Function Calling com APIs de preços (CoinGecko/CoinMarketCap) e feeds RSS.] |
+| Validação | [Camada de filtragem que compara o output do LLM com dados numéricos brutos da API.s] |
 
 ---
 
@@ -70,12 +59,12 @@ flowchart TD
 
 ### Estratégias Adotadas
 
-- [ ] [ex: Agente só responde com base nos dados fornecidos]
-- [ ] [ex: Respostas incluem fonte da informação]
-- [ ] [ex: Quando não sabe, admite e redireciona]
-- [ ] [ex: Não faz recomendações de investimento sem perfil do cliente]
+Grounding: O agente é instruído a priorizar dados retornados pelas funções da API sobre o conhecimento interno do modelo.
+Citação de Fontes: Toda análise de sentimento deve indicar de quais redes ou portais a informação foi extraída.
+Reconhecimento de Ignorância: Configuração de System Instructions para responder "Dados insuficientes" caso a confiança na análise técnica seja baixa.
+Filtro de Recomendação: O agente inclui um disclaimer automático de que suas análises não constituem aconselhamento financeiro direto.
 
 ### Limitações Declaradas
-> O que o agente NÃO faz?
-
-[Liste aqui as limitações explícitas do agente]
+O agente não possui custódia de chaves privadas nem realiza transações financeiras diretamente.
+Não prevê o futuro (previsões de preço são baseadas em probabilidades estatísticas e histórico).
+Dependência da latência de APIs externas de terceiros para dados em tempo real.
