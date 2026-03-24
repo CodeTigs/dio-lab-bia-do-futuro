@@ -1,0 +1,5 @@
+id_alerta,data_hora,ativo,tipo_alerta,mensagem,status_leitura
+101,2026-03-22T08:15:00Z,ETH,Taxa de Gas Alta,O Gas da rede Ethereum passou de 80 gwei. Evite transações agora.,lido
+102,2026-03-22T14:30:00Z,SOL,Anomalia de Volume,Volume de SOL aumentou 45% na última hora.,lido
+103,2026-03-23T09:00:00Z,BTC,Resumo Diário,Fechamento diário do BTC acima da resistência de $65k. Cenário Bullish.,lido
+104,2026-03-23T19:45:00Z,LINK,Alerta de Preço,LINK atingiu seu alvo de +10% em relação à compra.,nao_lido
