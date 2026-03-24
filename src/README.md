@@ -1,23 +1,30 @@
 # Código da Aplicação
 
-Esta pasta contém o código do seu agente financeiro.
-
-## Estrutura Sugerida
+## Estrutura
 
 ```
-src/
-├── app.py              # Aplicação principal (Streamlit/Gradio)
-├── agente.py           # Lógica do agente
-├── config.py           # Configurações (API keys, etc.)
-└── requirements.txt    # Dependências
+├── data/
+│   ├── carteira_crypto.json    # Ativos em posse e preço médio
+│   ├── historico_alertas.csv   # Memória de curto prazo
+│   ├── perfil_risco.json       # Limites de exposição e perfil
+│   └── whitelist_tokens.json   # Contratos seguros verificados
+├── src/
+│   ├── agente.py               # Lógica principal, integração LLM e APIs
+│   ├── app.py                  # Interface gráfica Streamlit
+│   └── config.py               # Carregamento de variáveis de ambiente
+├── .env                        # Chave da API do Google (não versionado)
+├── README.md                   # Documentação do projeto
+└── requirements.txt            # Dependências do Python
 ```
 
-## Exemplo de requirements.txt
+##requirements.txt
 
 ```
-streamlit
-openai
-python-dotenv
+streamlit>=1.32.0
+google-generativeai>=0.4.1
+pandas>=2.2.1
+python-dotenv>=1.0.1
+requests>=2.31.0
 ```
 
 ## Como Rodar
