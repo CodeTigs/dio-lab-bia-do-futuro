@@ -1,149 +1,68 @@
-# 🤖 Agente Financeiro Inteligente com IA Generativa
+# 👽GeminiCrypto AI👽 - Agente Financeiro Inteligente com IA Generativa
 
 ## Contexto
 
-Os assistentes virtuais no setor financeiro estão evoluindo de simples chatbots reativos para **agentes inteligentes e proativos**. Neste desafio, você vai idealizar e prototipar um agente financeiro que utiliza IA Generativa para:
-
+Este projeto é um protótipo de um agente financeiro que utiliza IA Generativa para atuar de forma consultiva no mercado de criptoativos. O objetivo é ultrapassar a barreira dos chatbots comuns para:
 - **Antecipar necessidades** ao invés de apenas responder perguntas
 - **Personalizar** sugestões com base no contexto de cada cliente
 - **Cocriar soluções** financeiras de forma consultiva
 - **Garantir segurança** e confiabilidade nas respostas (anti-alucinação)
 
-> [!TIP]
-> Na pasta [`examples/`](./examples/) você encontra referências de implementação para cada etapa deste desafio.
+
 
 ---
 
-## O Que Você Deve Entregar
+## O Que Foi Entregue
 
 ### 1. Documentação do Agente
-
-Defina **o que** seu agente faz e **como** ele funciona:
-
-- **Caso de Uso:** Qual problema financeiro ele resolve? (ex: consultoria de investimentos, planejamento de metas, alertas de gastos)
-- **Persona e Tom de Voz:** Como o agente se comporta e se comunica?
-- **Arquitetura:** Fluxo de dados e integração com a base de conhecimento
-- **Segurança:** Como evitar alucinações e garantir respostas confiáveis?
-
-📄 **Template:** [`docs/01-documentacao-agente.md`](./docs/01-documentacao-agente.md)
-
----
+- **Caso de Uso:** Mitigar o risco de decisões baseadas em FOMO na alta volatilidade do mercado cripto.
+- **Persona e Tom de Voz:** Consultivo, analítico e técnico, atuando como um analista sênior (Nexus Crypto AI).
+- **Arquitetura:** Interface em Streamlit conectada ao modelo Gemini 2.5 Flash, com injeção de dados locais e requisições em tempo real à API da CoinGecko.
+- **Segurança:** Regras estritas de NFA (Not Financial Advice) e bloqueio de alucinações através de *Few-Shot Prompting* e checagem de *whitelist* de contratos.
 
 ### 2. Base de Conhecimento
-
-Utilize os **dados mockados** disponíveis na pasta [`data/`](./data/) para alimentar seu agente:
+Os dados do cliente e parâmetros de segurança foram estruturados localmente na pasta `data/`:
 
 | Arquivo | Formato | Descrição |
 |---------|---------|-----------|
-| `transacoes.csv` | CSV | Histórico de transações do cliente |
-| `historico_atendimento.csv` | CSV | Histórico de atendimentos anteriores |
-| `perfil_investidor.json` | JSON | Perfil e preferências do cliente |
-| `produtos_financeiros.json` | JSON | Produtos e serviços disponíveis |
-
-Você pode adaptar ou expandir esses dados conforme seu caso de uso.
-
-📄 **Template:** [`docs/02-base-conhecimento.md`](./docs/02-base-conhecimento.md)
-
----
+| `carteira_crypto.json` | JSON | Ativos em posse, rede e preço médio de compra. |
+| `historico_alertas.csv` | CSV | Histórico de interações recentes para memória de curto prazo. |
+| `perfil_risco.json` | JSON | Perfil do cliente e limites máximos de exposição (ex: altcoins/memecoins). |
+| `whitelist_tokens.json` | JSON | Lista de contratos inteligentes verificados para evitar *scams*. |
 
 ### 3. Prompts do Agente
-
-Documente os prompts que definem o comportamento do seu agente:
-
-- **System Prompt:** Instruções gerais de comportamento e restrições
-- **Exemplos de Interação:** Cenários de uso com entrada e saída esperada
-- **Tratamento de Edge Cases:** Como o agente lida com situações limite
-
-📄 **Template:** [`docs/03-prompts.md`](./docs/03-prompts.md)
-
----
+As diretrizes de comportamento e restrições (System Prompt) foram documentadas e implementadas diretamente na inicialização do agente, garantindo o tratamento de *edge cases* (como tentativa de obter chaves privadas ou recomendações de moedas fora do Top 50).
 
 ### 4. Aplicação Funcional
-
-Desenvolva um **protótipo funcional** do seu agente:
-
-- Chatbot interativo (sugestão: Streamlit, Gradio ou similar)
-- Integração com LLM (via API ou modelo local)
-- Conexão com a base de conhecimento
-
-📁 **Pasta:** [`src/`](./src/)
-
----
-
-### 5. Avaliação e Métricas
-
-Descreva como você avalia a qualidade do seu agente:
-
-**Métricas Sugeridas:**
-- Precisão/assertividade das respostas
-- Taxa de respostas seguras (sem alucinações)
-- Coerência com o perfil do cliente
-
-📄 **Template:** [`docs/04-metricas.md`](./docs/04-metricas.md)
-
----
-
-### 6. Pitch
-
-Grave um **pitch de 3 minutos** (estilo elevador) apresentando:
-
-- Qual problema seu agente resolve?
-- Como ele funciona na prática?
-- Por que essa solução é inovadora?
-
-📄 **Template:** [`docs/05-pitch.md`](./docs/05-pitch.md)
-
----
-
-## Ferramentas Sugeridas
-
-Todas as ferramentas abaixo possuem versões gratuitas:
-
-| Categoria | Ferramentas |
-|-----------|-------------|
-| **LLMs** | [ChatGPT](https://chat.openai.com/), [Copilot](https://copilot.microsoft.com/), [Gemini](https://gemini.google.com/), [Claude](https://claude.ai/), [Ollama](https://ollama.ai/) |
-| **Desenvolvimento** | [Streamlit](https://streamlit.io/), [Gradio](https://www.gradio.app/), [Google Colab](https://colab.research.google.com/) |
-| **Orquestração** | [LangChain](https://www.langchain.com/), [LangFlow](https://www.langflow.org/), [CrewAI](https://www.crewai.com/) |
-| **Diagramas** | [Mermaid](https://mermaid.js.org/), [Draw.io](https://app.diagrams.net/), [Excalidraw](https://excalidraw.com/) |
+O protótipo foi desenvolvido utilizando:
+- **Interface:** Streamlit
+- **Integração LLM:** API nativa do Google Gemini (modelo `gemini-2.5-flash`).
+- **Dados Externos:** Biblioteca `requests` para consumo da CoinGecko API.
 
 ---
 
 ## Estrutura do Repositório
 
-```
-📁 lab-agente-financeiro/
+```text
+📁 GeminiCrypto-AI/
 │
 ├── 📄 README.md
+├── 📄 requirements.txt               # Dependências do projeto (Streamlit, Pandas, etc.)
+├── 📄 .env                           # Chave da API (não versionado)
 │
 ├── 📁 data/                          # Dados mockados para o agente
-│   ├── historico_atendimento.csv     # Histórico de atendimentos (CSV)
-│   ├── perfil_investidor.json        # Perfil do cliente (JSON)
-│   ├── produtos_financeiros.json     # Produtos disponíveis (JSON)
-│   └── transacoes.csv                # Histórico de transações (CSV)
+│   ├── carteira_crypto.json          
+│   ├── historico_alertas.csv         
+│   ├── perfil_risco.json             
+│   └── whitelist_tokens.json         
 │
 ├── 📁 docs/                          # Documentação do projeto
 │   ├── 01-documentacao-agente.md     # Caso de uso e arquitetura
 │   ├── 02-base-conhecimento.md       # Estratégia de dados
 │   ├── 03-prompts.md                 # Engenharia de prompts
-│   ├── 04-metricas.md                # Avaliação e métricas
-│   └── 05-pitch.md                   # Roteiro do pitch
+│   └── 04-metricas.md                # Avaliação e métricas
 │
-├── 📁 src/                           # Código da aplicação
-│   └── app.py                        # (exemplo de estrutura)
-│
-├── 📁 assets/                        # Imagens e diagramas
-│   └── ...
-│
-└── 📁 examples/                      # Referências e exemplos
-    └── README.md
-```
-
----
-
-## Dicas Finais
-
-1. **Comece pelo prompt:** Um bom system prompt é a base de um agente eficaz
-2. **Use os dados mockados:** Eles garantem consistência e evitam problemas com dados sensíveis
-3. **Foque na segurança:** No setor financeiro, evitar alucinações é crítico
-4. **Teste cenários reais:** Simule perguntas que um cliente faria de verdade
-5. **Seja direto no pitch:** 3 minutos passam rápido, vá ao ponto
+└── 📁 src/                           # Código da aplicação
+    ├── agente.py                     # Lógica principal, integração LLM e APIs
+    ├── app.py                        # Interface gráfica 
+    └── config.py                     # Gerenciamento de variáveis de ambiente
