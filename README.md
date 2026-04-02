@@ -1,5 +1,8 @@
 # 👽GeminiCrypto AI👽 - Agente Financeiro Inteligente com IA Generativa
 
+# Video explicativo do projeto
+https://youtu.be/Btra6SJPFoY
+
 ## Contexto
 
 Este projeto é um protótipo de um agente financeiro que utiliza IA Generativa para atuar de forma consultiva no mercado de criptoativos. O objetivo é ultrapassar a barreira dos chatbots comuns para:
